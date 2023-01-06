@@ -3,11 +3,11 @@ For documentation on Extenject itself, go to Extenject's GitHub page owned by Ma
 
 If you are Mathijs Bakker and want to pay some kind of attention (possibly want me to close this repo), please write something in zenject-extenject channel of InfallibleCode server in Discord, I often read it.
 
-This extension for Zenject allows you to decorate your installers when creating all the objects yourself without relying on Zenject assembling objects instead of you. The decoration I introduced is well suited to be used together with Unity's prefab system.
+This extension for Zenject allows you to decorate your installers when creating all the objects yourself without relying on Zenject assembling objects instead of you. The decoration I introduced is well suited to be used together with Unity's prefab system and is created with prefab system in mind.
 
 Changes to Zenject:
 1. Added CompositeInstaller in MonoBehaviour and ScriptableObject variants, also they bind their inner installers to the used container.
-2. In the dafult Zenject contexts "foreach" through all the installers, first injecting them and then calling InstallBindings() on them. In my variant of Zenject there are a few "foreach"es, first of which binds all the installers to the used container (just like the composite installer in my variant does), in second one they get .Inject-ed and then have their .DecorateProperties() called, in the third one they have their .InstallBindings() cllaed.
+2. In the default Zenject contexts "foreach" through all the installers, first injecting them and then calling InstallBindings() on them. In my variant of Zenject there are a few "foreach"es, first of which binds all the installers to the used container (just like the composite installer in my variant does), in second one they get .Inject-ed and then have their .DecorateProperties() called, in the third one they have their .InstallBindings() cllaed.
 3. Added virtual void DecorateBinding() {} to all the installer types, removed throwing exception in the default implementation of .InstallBindings() of MonoInstallers.
 4. Added DecorationProperty<T> which is the class you will decorate to extend behaviour of your installers.
 

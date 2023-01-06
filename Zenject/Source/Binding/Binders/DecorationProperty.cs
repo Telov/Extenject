@@ -36,7 +36,7 @@ namespace Zenject
                 else
                 {
                     _finalValue = _value;
-                    foreach (var funcDecorator in Enumerable.Reverse(_decorators))
+                    foreach (var funcDecorator in _decorators)
                     {
                         _finalValue = funcDecorator(_finalValue);
                     }

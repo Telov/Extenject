@@ -19,13 +19,11 @@ namespace Zenject
         public void Decorate(Func<T, T> decorator)
         {
             _decorators.Add(decorator);
-            _decorated = false;
         }
 
         public void Set(T value)
         {
             _value = value;
-            _decorated = false;
         }
         
         public T FinalValue
@@ -34,14 +32,15 @@ namespace Zenject
             {
                 if (_value == null) throw new Exception("No value to DecorationProperty");
 
-                if (!_decorated)
+                if (_decorated) throw new Exception("You stupid");
+                else
                 {
                     _finalValue = _value;
                     foreach (var funcDecorator in Enumerable.Reverse(_decorators))
                     {
                         _finalValue = funcDecorator(_finalValue);
                     }
-
+                    
                     _decorated = true;
                 }
 

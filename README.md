@@ -13,7 +13,8 @@ Changes to Zenject:
 
 NOTE: I don't use SOInstallers and PrefabInstallers and didn't add any support for them, if you want me to support them, create an issue or something.
 
-Here's a lengthy code example of how to use DecorationProperties - https://gist.github.com/Telov/a9e2980416a87a37849a281dd5521187
+Here's a code example of how to use DecorationProperties - https://gist.github.com/Telov/41be85314c1cc754654c464826495d41
+Here's a visual example how to use this code - https://github.com/Telov/Extenject/blob/main/My%20extenject%20picture%20guide.png
 
 On how to configure your installers in prefab system-friendly way: instead of creating installers and referencing them directly from GameObjectContext create a CompositeMonoInstaller, put in in it your original, INSTALLING installer, and only then reference the COMPOSITE installer from your GameObjectContext. DO NOT reference the INSTALLING or DECORATING installers from GameObjectContext or other Contexts. This warning is mostly important for working with DecorationProperty, if you think your installer will never use DecorationProperty you may choose to ignore the warning, but do it at your own risk. Every time you create a new prefab variant and want to add to it some DECORATING (extending) installers, you simply add it as the LAST installer in your composite installer for that type of behaviour (I use separate installers for Health, Movement and other modules). Also I prefer to have a separate GameObject for keeping installers, this GameObject has children GameObject which hold the CompositeMonoInstaller, and all the installers of the corresponding module.
 
